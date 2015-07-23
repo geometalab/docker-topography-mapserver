@@ -1,0 +1,8 @@
+mapserver:
+  build: mapserver-docker
+  volumes:
+    - mapserver/data:/mapserver/data
+    - mapserver/config:/mapserver/config
+  command: apachectl -DFOREGROUND
+  ports:
+    - "12345:80"
