@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet Quick Start Guide Example</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="assets/leaflet.css" />
+</head>
+<body>
+	<div id="map" style="width: 600px; height: 400px"></div>
+
+
+	<script src="assets/leaflet.js"></script>
+	<script>
+
+    var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+    // var terrain = new L.Google('TERRAIN');
+    // var road = new L.Google('ROADMAP');
+
+    var baseMaps = {
+      // "Google Terrain" : terrain,
+      // "Google RoadMap" : road,
+      "OpenStreetMap": osm
+    };
+
+    var wms_server_3857 = "http://localhost:12345/cgi-bin/mapserv?map=/mapserver/config/epsg_3857.map";
+    var wms_3857 = L.tileLayer.wms(wms_server_3857, {
+      layers: 'N00E006_200',
+      format: 'image/png',
+      transparent: true,
+      attribution: "localhost",
+      crs: L.CRS.EPSG3857
+    });
+
+    var wms_server_3857_styled = "http://localhost:12345/cgi-bin/mapserv?map=/mapserver/config/epsg_3857_styled.map";
+    var wms_3857_styled = L.tileLayer.wms(wms_server_3857_styled, {
+      layers: 'N00E006_500,N00E006_200,N00E006_100,N00E006_50,N00E006_20,N00E006_10',
+      format: 'image/png',
+      transparent: true,
+      attribution: "localhost",
+      crs: L.CRS.EPSG3857
+    });
+
+    var overlayMaps = {
+      "3857": wms_3857,
+      "wms_3857_styled": wms_3857_styled
+    };
+    var map = new L.Map('map', {center: new L.LatLng(0, 7),
+        zoom: 8,
+        maxZoom: 28,
+        layers: [osm, wms_3857_styled]
+    });
+
+    map.addControl(new L.Control.Layers(baseMaps, overlayMaps),{});
+
+	</script>
+</body>
+</html>

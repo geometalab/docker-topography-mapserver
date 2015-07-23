@@ -1,0 +1,116 @@
+MAP
+  NAME "MAPSERVER QUICKSTART"
+
+  UNITS DD
+  SHAPEPATH "/var/www/"
+  SIZE 800 600
+
+  IMAGETYPE PNG24
+
+  PROJECTION
+    "init=epsg:3857"
+  END
+
+  WEB
+    METADATA
+      ows_enable_request "*"
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_500"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_500.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_200"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_200.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_100"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_100.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_50"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_50.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_20"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_20.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_10"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_10.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+END

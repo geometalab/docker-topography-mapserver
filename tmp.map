@@ -1,0 +1,141 @@
+MAP
+  NAME "MAPSERVER QUICKSTART"
+
+  FONTSET "/mapserver/config/fonts.list"
+
+  UNITS DD
+  SHAPEPATH "/var/www/"
+  SIZE 800 600
+
+  IMAGETYPE PNG24
+
+  PROJECTION
+    "init=epsg:3857"
+  END
+
+  WEB
+    METADATA
+      ows_enable_request "*"
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_500"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_500.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_200"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_200.shp"
+    LABELITEM elev
+    GEOMTRANSFORM (smoothsia([shape], 5))
+    CLASS
+      LABEL
+        COLOR 132 31 31
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 2
+        TYPE TRUETYPE
+        FONT arial
+        SIZE 9
+        ANTIALIAS TRUE
+        ANGLE FOLLOW
+        POSITION CL
+        PARTIALS false
+        REPEATDISTANCE 120
+        TEXT (tostring([elev],"%.0f"))
+        STYLE
+          GEOMTRANSFORM 'labelpoly'
+          COLOR 153 153 153
+          OFFSET 3 2
+        END # STYLE
+      END
+      # <TextSymbolizer face-name="DejaVu Sans Book" size="9" fill="#747b90"
+      # halo-radius="1" placement="line">[height]</TextSymbolizer>
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_100"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_100.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_50"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_50.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_20"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_20.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+  LAYER
+    PROJECTION
+      AUTO
+    END
+    NAME "N00E006_10"
+    STATUS ON
+    TYPE LINE
+    DATA "N00E006_10.shp"
+    CLASS
+      STYLE
+        COLOR 200 200 200
+        OUTLINECOLOR 255 0 0
+      END
+    END
+  END
+
+END
