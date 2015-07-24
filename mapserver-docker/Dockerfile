@@ -15,18 +15,20 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
   php5\
   gdal-bin
 
+WORKDIR /mapserver/
+
 ADD mapserver/data /mapserver/data
 ADD mapserver/config /mapserver/config
-RUN mkdir -p /mapserver/data/shp
+ADD mapserver/utils /mapserver/utils
 
-RUN gdal_contour -a elev -i 500 /mapserver/data/hgt/N00E006.hgt /var/www/N00E006_500.shp
-RUN gdal_contour -a elev -i 200 /mapserver/data/hgt/N00E006.hgt /var/www/N00E006_200.shp
-RUN gdal_contour -a elev -i 100 /mapserver/data/hgt/N00E006.hgt /var/www/N00E006_100.shp
-RUN gdal_contour -a elev -i 50 /mapserver/data/hgt/N00E006.hgt /var/www/N00E006_50.shp
-RUN gdal_contour -a elev -i 20 /mapserver/data/hgt/N00E006.hgt /var/www/N00E006_20.shp
-RUN gdal_contour -a elev -i 10 /mapserver/data/hgt/N00E006.hgt /var/www/N00E006_10.shp
+RUN /mapserver/utils/convert_hgt_to_shp.sh /mapserver/data/hgt/
 
-RUN chown www-data:www-data -R /mapserver
+RUN /mapserver/utils/merge_shapefiles.sh /map/data/shp/500/ /var/www/500.shp
+RUN /mapserver/utils/merge_shapefiles.sh /map/data/shp/200/ /var/www/200.shp
+RUN /mapserver/utils/merge_shapefiles.sh /map/data/shp/100/ /var/www/100.shp
+RUN /mapserver/utils/merge_shapefiles.sh /map/data/shp/50/ /var/www/50.shp
+RUN /mapserver/utils/merge_shapefiles.sh /map/data/shp/25/ /var/www/25.shp
+RUN /mapserver/utils/merge_shapefiles.sh /map/data/shp/10/ /var/www/10.shp
 
 RUN a2enmod actions fastcgi alias cgi
 ADD config/apache-site.conf /etc/apache2/sites-available/mapserver.conf

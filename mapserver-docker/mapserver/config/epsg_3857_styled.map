@@ -20,15 +20,14 @@ MAP
   END
 
   LAYER
-    NAME "N00E006_500"
-    MAXSCALEDENOM 800000
-    MINSCALEDENOM 100000
-    PROJECTION
-      AUTO
-    END
-    STATUS OFF
+    NAME "contours"
     TYPE LINE
-    DATA "N00E006_500.shp"
+    STATUS DEFAULT
+    CONNECTIONTYPE UNION
+    CONNECTION "500m,200m,100m,50m,25m,10m"
+    PROJECTION
+      "init=epsg:3857"
+    END
     GEOMTRANSFORM (smoothsia([shape], 5))
     LABELITEM elev
     CLASS
@@ -52,14 +51,33 @@ MAP
         END # STYLE
       END
       STYLE
-        COLOR 200 200 200
+        MAXSCALEDENOM 8000000000
+        MINSCALEDENOM 100000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 0 0
+      END
+      STYLE
+        MAXSCALEDENOM 100000
+        COLOR 100 100 100
         OUTLINECOLOR 255 0 0
       END
     END
   END
 
   LAYER
-    NAME "N00E006_200"
+    NAME "500m"
+    MAXSCALEDENOM 8000000000
+    MINSCALEDENOM 100000
+    PROJECTION
+      AUTO
+    END
+    STATUS OFF
+    TYPE LINE
+    DATA "500"
+  END
+
+  LAYER
+    NAME "200m"
     MAXSCALEDENOM 100000
     MINSCALEDENOM 50000
     PROJECTION
@@ -67,38 +85,11 @@ MAP
     END
     STATUS OFF
     TYPE LINE
-    DATA "N00E006_200.shp"
-    LABELITEM elev
-    GEOMTRANSFORM (smoothsia([shape], 5))
-    CLASS
-      LABEL
-        COLOR 132 31 31
-        OUTLINECOLOR 255 255 255
-        OUTLINEWIDTH 2
-        TYPE TRUETYPE
-        FONT arial
-        SIZE 9
-        ANTIALIAS TRUE
-        ANGLE FOLLOW
-        POSITION CL
-        PARTIALS false
-        REPEATDISTANCE 120
-        TEXT (tostring([elev],"%.0f"))
-        STYLE
-          GEOMTRANSFORM 'labelpoly'
-          COLOR 153 153 153
-          OFFSET 3 2
-        END # STYLE
-      END
-      STYLE
-        COLOR 200 200 200
-        OUTLINECOLOR 255 0 0
-      END
-    END
+    DATA "200"
   END
 
   LAYER
-    NAME "N00E006_100"
+    NAME "100m"
     MAXSCALEDENOM 50000
     MINSCALEDENOM 10000
     PROJECTION
@@ -106,38 +97,11 @@ MAP
     END
     STATUS ON
     TYPE LINE
-    DATA "N00E006_100.shp"
-    LABELITEM elev
-    GEOMTRANSFORM (smoothsia([shape], 5))
-    CLASS
-      LABEL
-        COLOR 132 31 31
-        OUTLINECOLOR 255 255 255
-        OUTLINEWIDTH 2
-        TYPE TRUETYPE
-        FONT arial
-        SIZE 9
-        ANTIALIAS TRUE
-        ANGLE FOLLOW
-        POSITION CL
-        PARTIALS false
-        REPEATDISTANCE 120
-        TEXT (tostring([elev],"%.0f"))
-        STYLE
-          GEOMTRANSFORM 'labelpoly'
-          COLOR 153 153 153
-          OFFSET 3 2
-        END # STYLE
-      END
-      STYLE
-        COLOR 200 200 200
-        OUTLINECOLOR 255 0 0
-      END
-    END
+    DATA "100"
   END
 
   LAYER
-    NAME "N00E006_50"
+    NAME "50m"
     MAXSCALEDENOM 10000
     MINSCALEDENOM 4000
     PROJECTION
@@ -145,38 +109,11 @@ MAP
     END
     STATUS ON
     TYPE LINE
-    DATA "N00E006_50.shp"
-    LABELITEM elev
-    GEOMTRANSFORM (smoothsia([shape], 5))
-    CLASS
-      LABEL
-        COLOR 132 31 31
-        OUTLINECOLOR 255 255 255
-        OUTLINEWIDTH 2
-        TYPE TRUETYPE
-        FONT arial
-        SIZE 9
-        ANTIALIAS TRUE
-        ANGLE FOLLOW
-        POSITION CL
-        PARTIALS false
-        REPEATDISTANCE 120
-        TEXT (tostring([elev],"%.0f"))
-        STYLE
-          GEOMTRANSFORM 'labelpoly'
-          COLOR 153 153 153
-          OFFSET 3 2
-        END # STYLE
-      END
-      STYLE
-        COLOR 200 200 200
-        OUTLINECOLOR 255 0 0
-      END
-    END
+    DATA "50"
   END
 
   LAYER
-    NAME "N00E006_20"
+    NAME "25m"
     MAXSCALEDENOM 4000
     MINSCALEDENOM 2000
     PROJECTION
@@ -184,69 +121,17 @@ MAP
     END
     STATUS ON
     TYPE LINE
-    DATA "N00E006_20.shp"
-    GEOMTRANSFORM (smoothsia([shape], 5))
-    CLASS
-      LABEL
-        COLOR 132 31 31
-        OUTLINECOLOR 255 255 255
-        OUTLINEWIDTH 2
-        TYPE TRUETYPE
-        FONT arial
-        SIZE 9
-        ANTIALIAS TRUE
-        ANGLE FOLLOW
-        POSITION CL
-        PARTIALS false
-        REPEATDISTANCE 120
-        TEXT (tostring([elev],"%.0f"))
-        STYLE
-          GEOMTRANSFORM 'labelpoly'
-          COLOR 153 153 153
-          OFFSET 3 2
-        END # STYLE
-      END
-      STYLE
-        COLOR 200 200 200
-        OUTLINECOLOR 255 0 0
-      END
-    END
+    DATA "25"
   END
 
   LAYER
-    NAME "N00E006_10"
+    NAME "10m"
     MAXSCALEDENOM 2000
     PROJECTION
       AUTO
     END
     STATUS ON
     TYPE LINE
-    DATA "N00E006_10.shp"
-    GEOMTRANSFORM (smoothsia([shape], 5))
-    CLASS
-      LABEL
-        COLOR 132 31 31
-        OUTLINECOLOR 255 255 255
-        OUTLINEWIDTH 2
-        TYPE TRUETYPE
-        FONT arial
-        SIZE 9
-        ANTIALIAS TRUE
-        ANGLE FOLLOW
-        POSITION CL
-        PARTIALS false
-        REPEATDISTANCE 120
-        TEXT (tostring([elev],"%.0f"))
-        STYLE
-          GEOMTRANSFORM 'labelpoly'
-          COLOR 153 153 153
-          OFFSET 3 2
-        END # STYLE
-      END
-      STYLE
-        COLOR 200 200 200
-        OUTLINECOLOR 255 0 0
-      END
-    END
+    DATA "10"
   END
 END
