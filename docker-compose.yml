@@ -3,6 +3,7 @@ mapserver:
   volumes:
     - mapserver-docker/mapserver/data:/mapserver/data
     - mapserver-docker/mapserver/config:/mapserver/config
+    - mapserver-docker/mapserver/data/merged:/var/www
   command: apachectl -DFOREGROUND
   ports:
     - "12345:80"

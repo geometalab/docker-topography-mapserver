@@ -23,7 +23,7 @@ MAP
     TYPE LINE
     STATUS DEFAULT
     CONNECTIONTYPE UNION
-    CONNECTION "500m,200m,100m,50m,25m,10m"
+    CONNECTION "500m,200m,100m,50m,20m,10m"
     GEOMTRANSFORM (smoothsia([shape], 3, 1, 'angle'))
     PROJECTION
       "init=epsg:3857"
@@ -34,6 +34,7 @@ MAP
   END
 
   LAYER
+   EXTENT
     NAME "500m"
     # show layer from thi scale
     MAXSCALEDENOM 3000000
@@ -236,14 +237,14 @@ MAP
   END
 
   LAYER
-    NAME "25m"
+    NAME "20m"
     MAXSCALEDENOM 10000
     PROJECTION
       AUTO
     END
     STATUS ON
     TYPE LINE
-    DATA "25"
+    DATA "20"
     GEOMTRANSFORM (smoothsia([shape], 5))
     LABELITEM elev
     CLASS
